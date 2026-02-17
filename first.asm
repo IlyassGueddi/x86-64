@@ -1,12 +1,11 @@
-section .text
-global _start
-
-_start:
-    mov rax, 5
-    mov rbx, 3
-    add rax, rbx
-
-    mov rax, 60        ; syscall: exit
-    mov rdi, 0         ; status = 0
-    syscall
-
+.LC0:
+        .string "hello worls"
+main:
+        push    rbp
+        mov     rbp, rsp
+        mov     edi, OFFSET FLAT:.LC0
+        mov     eax, 0
+        call    printf
+        mov     eax, 0
+        pop     rbp
+        ret
